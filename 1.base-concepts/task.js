@@ -1,4 +1,4 @@
-"use strict";
+"use strict;
 // ax^2+bx+c=0
 // discrim D=b^2-4ac
 // if D>0 (2sqrt) (-b + Math.sqrt(d) )/(2*a) и (-b - Math.sqrt(d) )/(2*a).
