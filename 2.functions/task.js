@@ -22,20 +22,16 @@ function getArrayParams(arr) {
 
 // Задание 2
 function worker(arr) {
-  let sum;
+  let sum = 0;
 
-  sum = 0;
   for (let i = 0; i < arr.length; i++) {
   sum += arr[i];
 }
   return sum;
 }
-worker()
 
 function makeWork(arrOfArr, func) {
-  let max;
-
-  max = 0;
+  let max = 0;
   
   for (let i = 0; i < arrOfArr.length; i++) {
     sum = func(arrOfArr[i]);
@@ -58,4 +54,3 @@ function worker2(arr) {
   dist = max - min;
   return Math.abs(dist);
 }
- worker2(arrOfArr, worker)
