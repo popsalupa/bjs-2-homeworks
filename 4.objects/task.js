@@ -8,25 +8,36 @@ function Student(name, gender, age) {
   let student4 = new Student ("vasiliya", "male", "21");
 
 Student.prototype.setSubject = function (subjectName) {
-  //ваш код
     this.subject = subjectName;
   }
-// ваш код для остальных методов
-  let marks;
-  Student.prototype.addmark = function (mark) {
-    this.mark = marks;
+
+  Student.prototype.addMark = function (mark) {
     if(this.marks === undefined){ 
-      marks = 1; 
-      } else  {
-      marks = 2;
-      } else {
-      marks = 3;
-      }  else {
-      marks = 4;
-      }  else {
-      marks = 5;
-      } 
+      this.marks = [mark]; 
+    } else {
+      this.marks.push(mark);
+    }
   }
 
-console.log (student3);
-console.log (student4);
+  Student.prototype.addMarks = function (...mark) {
+    if (this.marks === undefined) {
+      this.marks = mark;
+    } else {
+      this.marks.push(mark);
+    }
+  }
+
+  Student.prototype.getAverage = function () {
+    let result = this.marks.reduce((a, b) => a + b, 0) / this.marks.length;
+  
+    return result;
+  }
+  
+  Student.prototype.exclude = function (reason) {
+    delete this.marks;
+    delete this.subject;
+  
+    this.excluded = reason;
+  }
+console.log(student3);
+console.log(student4) 
