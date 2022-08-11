@@ -65,3 +65,46 @@ class DetectiveBook extends Book  {
     this.type = 'detective';
     }
 }
+
+
+class Library {
+    constructor (name, books) {
+        this.name = name;
+        this.books = [];
+    }
+
+
+    addBook(book) {
+        if (book.state > 30) {
+            this.books.push(book);
+        } 
+    }
+
+    findBookBy(type, value) {
+        let thatBook = this.books.find(key => key[type] === value);
+        return thatBook ?? null;
+    }
+
+    giveBookByName(bookName) {
+        let thatBook = this.books.find(key => key.name === bookName);
+        
+        if (thatBook != undefined) {
+            this.books.splice(this.books.findIndex(key => key.name === bookName), 1);
+            return thatBook;
+        } else {
+            return null;
+        }
+    }
+}
+
+const leninsLibary = new Library ("Библеотека имени имени")
+const hat = new DetectiveBook ("HZ", "обстоятельства зонта", 666, 988 );
+leninsLibary.addBook(new DetectiveBook("HZ", "Zona", 566, 9881 ));
+leninsLibary.addBook(new NovelBook ("the Boyz", "Приключения Тикитикитики", 1919, 1822));
+leninsLibary.addBook(new FantasticBook("Аркадий и Борис Стругацкие", "Пикник на обочине", 1972, 168));
+console.log(leninsLibary.findBookBy("releaseDate", 1919).name); //Приключения Тикитикитики
+leninsLibary.giveBookByName("обстоятельства зонта");
+hat.state = 40;
+hat.fix();
+leninsLibary.addBook(hat);
+console.log(leninsLibary)
