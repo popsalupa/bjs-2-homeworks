@@ -42,7 +42,7 @@ function debounceDecoratorNew(func, ms) {
   return wrapper;
 }
 
-function debounceDecorator2(func, ms) {
+function debounceDecorator2(func) {
   let timer = null;
   
   function wrapper(...args) {
