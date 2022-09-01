@@ -42,12 +42,18 @@ function debounceDecoratorNew(func, ms) {
   return wrapper;
 }
 
-function debounceDecorator2(func) {
-  if (timer === null) {
-    func(...args);
+function debounceDecorator2(func, ms) {
+  let timer = null;
+  
+  function wrapper(...args) {
+    if (timer === null) {
+      func(...args);
   }
+
   clearTimeout(timer);
   timer = serTimeout(() => func(...args), ms);
+  wrapper.count++;
+}
   wrapper.count = 0;
   return wrapper;
 }
